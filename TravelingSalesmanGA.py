@@ -31,16 +31,16 @@ def travelingSalesmanGA(initSeq, coordinates, population_size, maxits):
 
     #initialize population
     population = np.zeros([population_size, len(initSeq)])
-    #initialize history arrays to keep track
+    #initialize history arrays to keep track of previously calculated fitness levels
     fitnessHistory = np.zeros(maxits + 1)
     bestFitnessHistory = np.zeros(maxits + 1)
 
-    #set population with by shuffling the initial sequence
+    #set initial population by randomly shuffling the initial sequence
     for i in range(0, population_size):
         population[i] = rnd.sample(initSeq, len(initSeq))
     new_population = np.zeros([population_size, len(initSeq)])
 
-    #initial fitness evaluation, fitness is determined by the distance the whole path takes
+    #initial fitness evaluation, where fitness is determined by the distance the whole path takes
     fitness = np.zeros(population_size)
     population_best_fitness = math.inf
     for i in range(0, population_size):
@@ -75,7 +75,7 @@ def travelingSalesmanGA(initSeq, coordinates, population_size, maxits):
         for i in range(0, population_size):
             gene_selection_lottery_array[int(gene_count_by_fitness[i]):int(gene_count_by_fitness[i+1])] = i #and here we put gene i in the selection array a number of times proportional to fitness
         
-        #loop to create new generation, only iterate through half since breeding occurs in pairs
+        #loop to create new generation, only iterate through half of the population since breeding occurs in pairs
         for i in range(0, int(population_size/2)):
             
             #step 1 is selection: select two genes (biased towards better fitness)
@@ -119,7 +119,7 @@ def travelingSalesmanGA(initSeq, coordinates, population_size, maxits):
                 #add the offspring to the new population
                 new_population[2*i,:] = offspring1
                 new_population[2*i+1,:] = offspring2
-            else: #if no breeding occurs keep the parents
+            else: #if no breeding occurs keep the parents as is
                 new_population[2*i,:] = parent1
                 new_population[2*i+1,:] = parent2
         
