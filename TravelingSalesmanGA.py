@@ -1,3 +1,5 @@
+#Cody Au and Noah Wiens
+#Submitted for ECE 3790 during the Winter 2020 term at the U of M
 import numpy as np
 import math
 import matplotlib as mpl
@@ -49,14 +51,14 @@ def travelingSalesmanGA(initSeq, coordinates, population_size, maxits):
             population_best_fitness = fitness[i]
             population_best_gene = np.copy(population[i])
 
-    #keep track of the best over all populations ever
+    #keep track of the best gene and its fitness over all populations ever
     best_fitness = population_best_fitness
     best_gene = np.copy(population_best_gene)
 
     #normalize fitness
     normalized_fitness = fitness/max(fitness)
 
-    #set ga random percentages
+    #set random percentages for crossover and mutation to occur
     crossover_percent = 0.4
     mutation_percent = 0.05
 
@@ -199,7 +201,7 @@ n = 20 #number of cities
 """
 x = np.random.rand(n)
 y = np.random.rand(n)
-s0 = range(0,n) #intial state, start by visiting them in order
+s0 = range(0,n) #initial state, start by visiting them in order
 """
 
 #circle example (optimal solution is just to traverse the circle)
@@ -215,9 +217,9 @@ for i in range(0,np.size(x)):
     coordinates[i][0] = x[i];
     coordinates[i][1] = y[i];
 
-#initialize initial sequence, integers 0 to n-1 to represent locations to visit
+#initialize initial sequence, which are integers from 0 to n-1 to represent locations to visit
 initSeq = range(0, n)
-#set number of max iterations the genetic algorithm will perform
+#set maximum number of iterations the genetic algorithm can perform
 maxits = 200
 #call genetic algorithm
 travelingSalesmanGA(initSeq, coordinates, 200, maxits)
