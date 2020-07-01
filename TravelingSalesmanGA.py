@@ -21,7 +21,7 @@ def travelingSalesman(sequence, coordinates):
     #loop back to the first point in the sequence
     distance += math.sqrt((coordinates[int(sequence[n-1])][0] - coordinates[0][0])**2 + (coordinates[int(sequence[n-1])][1] - coordinates[0][1])**2)
 
-    return distance;
+    return distance
 
 #genetic algorithm to find shortest possible path while still traversing every city
 #requires an initial sequence that contains all locations as integers 0, n-1
@@ -214,8 +214,8 @@ coordinates = [0] * np.size(x)
 for i in range(np.size(x)):
     coordinates[i] = [0] * 2
 for i in range(0,np.size(x)):
-    coordinates[i][0] = x[i];
-    coordinates[i][1] = y[i];
+    coordinates[i][0] = x[i]
+    coordinates[i][1] = y[i]
 
 #initialize initial sequence, which are integers from 0 to n-1 to represent locations to visit
 initSeq = range(0, n)
